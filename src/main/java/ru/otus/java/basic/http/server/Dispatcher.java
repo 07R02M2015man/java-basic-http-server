@@ -42,7 +42,7 @@ public class Dispatcher {
             }
             processors.get(request.getRoutingKey()).execute(request, out);
         } catch (BadRequestException e) {
-            logger.error(e);
+            logger.error("Не удалось обработать запрос из-за ошибки клиента: " + e.getMessage(), e);
             DefaultErrorDto defaultErrorDto = new DefaultErrorDto("CLIENT_DEFAULT_ERROR", e.getMessage());
             String jsonError = new Gson().toJson(defaultErrorDto);
             String response = "HTTP/1.1 400 Bad Request\r\n" +
@@ -51,7 +51,7 @@ public class Dispatcher {
                     jsonError;
             out.write(response.getBytes(StandardCharsets.UTF_8));
         } catch (Exception e) {
-            logger.error(e);
+            logger.error("Сервер попытался выполнить недопустимую операцию", e);
             defaultInternalServerErrorProcessor.execute(request, out);
         }
 

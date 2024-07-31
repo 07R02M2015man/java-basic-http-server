@@ -49,7 +49,7 @@ public class HttpServer {
                 });
             }
         } catch (IOException e) {
-            logger.error(e);
+            logger.error("Не удалось выполнить подключение к порту {}", port, e);
         } finally {
             executorService.shutdown();
         }

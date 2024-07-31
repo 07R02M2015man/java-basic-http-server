@@ -28,10 +28,10 @@ public class HandleRequest {
             int n = in.read(buffer);
             String rawRequest = new String(buffer, 0, n);
             HttpRequest httpRequest = new HttpRequest(rawRequest);
-            httpRequest.printInfo(false);
+            httpRequest.printInfo();
             dispatcher.execute(httpRequest, out);
         } catch (IOException e) {
-            logger.error(e);
+            logger.error("Ошибка парсинга", e);
         } finally {
             disconnect();
         }
@@ -42,20 +42,20 @@ public class HandleRequest {
             try {
                 in.close();
             } catch (IOException e) {
-                logger.error(e);
+                logger.error("Ошибка закрытия входящего потока", e);
             }
         }
         if (out != null) {
             try {
                 out.close();
             } catch (IOException e) {
-                logger.error(e);
+                logger.error("Ошибка закрытия исходящего потока",e);
             }
         }
         try {
             socket.close();
         } catch (IOException e) {
-            logger.error(e);
+            logger.error("Ошибка закрытия сокета", e);
         }
     }
 }

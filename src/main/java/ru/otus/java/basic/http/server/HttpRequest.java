@@ -83,13 +83,14 @@ public class HttpRequest {
         }
     }
 
-    public void printInfo(boolean showRawRequest) {
+    public void printInfo() {
         logger.info("uri: {}", uri);
         logger.info("method: {}", method);
         logger.info("body: {}", body);
         for (Map.Entry<String, String> entry : headers.entrySet()) {
             logger.info("headers: {}: {}", entry.getKey(), entry.getValue());
         }
+        logger.debug(rawRequest);
     }
 
 }
