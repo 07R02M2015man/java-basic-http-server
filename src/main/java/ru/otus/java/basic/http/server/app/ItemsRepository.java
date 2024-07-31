@@ -27,4 +27,18 @@ public class ItemsRepository {
         items.add(item);
         return item;
     }
+
+    public void delete(long id) {
+        items.removeIf(item -> item.getId() == id);
+    }
+
+//    public boolean delete(Long id) {
+//        for (Item item : items) {
+//            if (Objects.equals(item.getId(), id)) {
+//                items.remove(item);
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 }

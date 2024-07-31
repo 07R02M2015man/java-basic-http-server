@@ -5,16 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8876a940-2b21-4856-93ee-52df0e0185d4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/DefaultErrorDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/app/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/app/ItemsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/CreateNewItemProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/GetAllItemsProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/HandleRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/DeleteItemProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/BadRequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/BadRequestException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/Dispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/Dispatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/HttpMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/HttpMethod.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/HttpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/HttpRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/HttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/HttpServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/app/ItemsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/app/ItemsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/AnotherHelloWorldRequestProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/AnotherHelloWorldRequestProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/CalculatorRequestProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/CalculatorRequestProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/CreateNewItemProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/CreateNewItemProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/DefaultInternalServerErrorRequestProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/DefaultInternalServerErrorRequestProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/DefaultNotFoundRequestProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/DefaultNotFoundRequestProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/GetAllItemsProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/GetAllItemsProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/HelloWorldRequestProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/otus/java/basic/http/server/processors/HelloWorldRequestProcessor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="homework24" />
+        <entry key="$PROJECT_DIR$" value="lesson2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,7 +62,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "lesson2",
+    "git-widget-placeholder": "homework24",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
@@ -69,7 +78,7 @@
       <module name="jule-http-server-my" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.otus.java.basic.http.server.processors.*" />
+          <option name="PATTERN" value="ru.otus.java.basic.http.server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -94,7 +103,20 @@
       <option name="presentableId" value="Default" />
       <updated>1721475006523</updated>
     </task>
+    <task id="LOCAL-00001" summary="lesson2">
+      <option name="closed" value="true" />
+      <created>1722343115420</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1722343115420</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="lesson2" />
+    <option name="LAST_COMMIT_MESSAGE" value="lesson2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

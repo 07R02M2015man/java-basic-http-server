@@ -2,6 +2,9 @@ package ru.otus.java.basic.http.server.processors;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.jmx.Server;
 import ru.otus.java.basic.http.server.BadRequestException;
 import ru.otus.java.basic.http.server.HttpRequest;
 import ru.otus.java.basic.http.server.app.Item;
@@ -13,8 +16,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class CreateNewItemProcessor implements RequestProcessor {
-    private ItemsRepository itemsRepository;
-
+    private static final Logger logger = LogManager.getLogger(Server.class.getName());
+    private final ItemsRepository itemsRepository;
     public CreateNewItemProcessor(ItemsRepository itemsRepository) {
         this.itemsRepository = itemsRepository;
     }
@@ -25,14 +28,13 @@ public class CreateNewItemProcessor implements RequestProcessor {
             Gson gson = new Gson();
             Item item = itemsRepository.add(gson.fromJson(request.getBody(), Item.class));
             String itemJson = gson.toJson(item);
-            String response = "" +
-                    "HTTP/1.1 201 Created\r\n" +
+            String response = "HTTP/1.1 201 Created\r\n" +
                     "Content-Type: application/json\r\n" +
                     "\r\n" +
                     itemJson;
             out.write(response.getBytes(StandardCharsets.UTF_8));
         } catch (JsonParseException e) {
-            e.printStackTrace();
+            logger.error("Некорректный формат входящего JSON объекта");
             throw new BadRequestException("Некорректный формат входящего JSON объекта");
         }
     }

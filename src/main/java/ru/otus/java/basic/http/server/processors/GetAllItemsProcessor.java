@@ -12,8 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class GetAllItemsProcessor implements RequestProcessor {
-    private ItemsRepository itemsRepository;
-
+    private final ItemsRepository itemsRepository;
     public GetAllItemsProcessor(ItemsRepository itemsRepository) {
         this.itemsRepository = itemsRepository;
     }
@@ -23,8 +22,7 @@ public class GetAllItemsProcessor implements RequestProcessor {
         List<Item> items = itemsRepository.getItems();
         Gson gson = new Gson();
         String itemsJson = gson.toJson(items);
-        String response = "" +
-                "HTTP/1.1 200 OK\r\n" +
+        String response = "HTTP/1.1 200 OK\r\n" +
                 "Content-Type: application/json\r\n" +
                 "\r\n" +
                 itemsJson;

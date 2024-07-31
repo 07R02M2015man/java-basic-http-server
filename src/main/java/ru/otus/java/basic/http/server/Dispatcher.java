@@ -1,6 +1,8 @@
 package ru.otus.java.basic.http.server;
 
 import com.google.gson.Gson;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.otus.java.basic.http.server.app.ItemsRepository;
 import ru.otus.java.basic.http.server.processors.*;
 
@@ -10,7 +12,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Dispatcher  {
+public class Dispatcher {
+    private static final Logger logger = LogManager.getLogger(Dispatcher.class.getName());
     private Map<String, RequestProcessor> processors;
     private RequestProcessor defaultNotFoundRequestProcessor;
     private RequestProcessor defaultInternalServerErrorProcessor;
@@ -25,6 +28,7 @@ public class Dispatcher  {
         this.processors.put("GET /calculator", new CalculatorRequestProcessor());
         this.processors.put("GET /items", new GetAllItemsProcessor(itemsRepository));
         this.processors.put("POST /items", new CreateNewItemProcessor(itemsRepository));
+        this.processors.put("DELETE /items", new DeleteItemProcessor(itemsRepository));
 
         this.defaultNotFoundRequestProcessor = new DefaultNotFoundRequestProcessor();
         this.defaultInternalServerErrorProcessor = new DefaultInternalServerErrorRequestProcessor();
@@ -38,17 +42,16 @@ public class Dispatcher  {
             }
             processors.get(request.getRoutingKey()).execute(request, out);
         } catch (BadRequestException e) {
-            e.printStackTrace();
+            logger.error(e);
             DefaultErrorDto defaultErrorDto = new DefaultErrorDto("CLIENT_DEFAULT_ERROR", e.getMessage());
             String jsonError = new Gson().toJson(defaultErrorDto);
-            String response = "" +
-                    "HTTP/1.1 400 Bad Request\r\n" +
+            String response = "HTTP/1.1 400 Bad Request\r\n" +
                     "Content-Type: application/json\r\n" +
                     "\r\n" +
                     jsonError;
             out.write(response.getBytes(StandardCharsets.UTF_8));
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e);
             defaultInternalServerErrorProcessor.execute(request, out);
         }
 
