@@ -1,5 +1,4 @@
 package ru.otus.java.basic.http.server.processors;
-
 import ru.otus.java.basic.http.server.BadRequestException;
 import ru.otus.java.basic.http.server.HttpRequest;
 
@@ -29,8 +28,7 @@ public class CalculatorRequestProcessor implements RequestProcessor {
         }
 
         String result = a + " + " + b + " = " + (a + b);
-        String response = "" +
-                "HTTP/1.1 200 OK\r\n" +
+        String response = "HTTP/1.1 200 OK\r\n" +
                 "Content-Type: text/html\r\n" +
                 "\r\n" +
                 "<html><body><h1>" + result + "</h1></body></html>";
